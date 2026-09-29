@@ -304,6 +304,7 @@ body.viewer-open { overflow: hidden; }
     transform: scale(1.025);
     filter: saturate(1.035);
   }
+}
 .data-card .data-margin-note { margin-top: 20px; padding: 13px 15px; border-left: 2px solid #c4c9aa; background: #eaf0e42e; color: #476650; font-size: 14px; }
 .data-margin-note span { display: block; margin-top: 4px; color: #766b61; font-size: 12px; }
 .internship-feature { margin-top: 30px; padding-top: 30px; border-top: 1px solid #cfc3b7; }
@@ -703,10 +704,19 @@ body.viewer-open { overflow: hidden; }
   .flow-story h4 { font-size: 23px; }
 }
 @media (max-width: 760px) {
+  .process-band { grid-template-columns: 1fr; gap: 8px; }
+  .process-step { display: grid; grid-template-columns: 78px minmax(0, 1fr); align-items: center; gap: 12px; min-height: 0; padding: 10px 12px; }
+  .step-header { justify-content: flex-start; gap: 7px; margin: 0; }
+  .step-icon { width: 24px; height: 24px; }
+  .step-content small { white-space: normal; }
+  .process-step:not(:last-child)::after { display: none; }
   .focus-showcase.tool-card { grid-template-columns: 1fr; }
   .focus-product { max-width: 290px; margin: auto; }
   .flow-enhanced .focus-flow { grid-template-columns: 1fr; }
   .flow-tabs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
   .focus-panel, .focus-making { grid-template-columns: 1fr; }
   .journey-count { display: none; }
+  .focus-journey > summary { flex-wrap: wrap; }
+  .journey-summary-content { flex: 1 1 190px; }
+  .journey-cta-btn { margin-left: auto; }
 }

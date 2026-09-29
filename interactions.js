@@ -49,6 +49,50 @@
       heroSpeech.textContent = 'わくわく！';
     }, 3200);
   });
+
+  const portraitCard = document.getElementById('portrait-card');
+  if (portraitCard) {
+    const front = portraitCard.querySelector('.portrait-front');
+    const back = portraitCard.querySelector('.portrait-back');
+    let portraitFrame = 0;
+    const resetPortraitTilt = () => {
+      cancelAnimationFrame(portraitFrame);
+      portraitFrame = 0;
+      portraitCard.style.setProperty('--portrait-tilt-x', '0deg');
+      portraitCard.style.setProperty('--portrait-tilt-y', '0deg');
+    };
+    const setPortraitOpen = open => {
+      portraitCard.setAttribute('aria-pressed', String(open));
+      portraitCard.setAttribute('aria-label', open ? '回到高天宇的照片' : '翻开高天宇的照片卡，看看我的做事方式');
+      front.setAttribute('aria-hidden', String(open));
+      back.setAttribute('aria-hidden', String(!open));
+    };
+    portraitCard.addEventListener('click', () => {
+      setPortraitOpen(portraitCard.getAttribute('aria-pressed') !== 'true');
+    });
+    portraitCard.addEventListener('pointermove', event => {
+      if (motion.matches || !finePointer.matches || event.pointerType === 'touch') return;
+      cancelAnimationFrame(portraitFrame);
+      portraitFrame = requestAnimationFrame(() => {
+        const bounds = portraitCard.getBoundingClientRect();
+        const x = Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width) * 2 - 1));
+        const y = Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height) * 2 - 1));
+        portraitCard.style.setProperty('--portrait-tilt-x', `${(-y * 2.4).toFixed(2)}deg`);
+        portraitCard.style.setProperty('--portrait-tilt-y', `${(x * 3.5).toFixed(2)}deg`);
+        portraitFrame = 0;
+      });
+    }, { passive: true });
+    portraitCard.addEventListener('pointerleave', resetPortraitTilt);
+    portraitCard.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && portraitCard.getAttribute('aria-pressed') === 'true') {
+        setPortraitOpen(false);
+        resetPortraitTilt();
+      }
+    });
+    window.addEventListener('blur', resetPortraitTilt);
+    motion.addEventListener('change', resetPortraitTilt);
+    finePointer.addEventListener('change', resetPortraitTilt);
+  }
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', () => {
       directory?.removeAttribute('open');
