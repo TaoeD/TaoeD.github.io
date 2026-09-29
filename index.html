@@ -1,0 +1,1545 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3eb">
+  <meta name="description" content="高天宇的个人主页：游戏经历、数据实践、运营协作与 AI 应用。">
+  <title>高天宇｜认真玩游戏，也认真把事情做好</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f3eb;
+      --paper-light: #fffaf3;
+      --pink-wash: #f6ccd4;
+      --pink: #ed7e9a;
+      --pink-deep: #bf536f;
+      --ink: #191919;
+      --muted: #70665f;
+      --line: #d8cec1;
+      --green: #43866d;
+      --content: 1320px;
+      --display: "STKaiti", "KaiTi", "Kaiti SC", "Noto Serif SC", "Noto Sans SC", sans-serif;
+      --body: "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(211, 178, 143, .10), transparent 24rem),
+        radial-gradient(circle at 91% 19%, rgba(237, 126, 154, .08), transparent 32rem),
+        var(--paper);
+      font: 16px/1.65 var(--body);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body::after {
+      position: fixed;
+      z-index: 40;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      mix-blend-mode: multiply;
+      opacity: .22;
+      content: "";
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 4px;
+    }
+    ::selection { color: #fff; background: var(--pink-deep); }
+
+    .topbar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      min-height: 74px;
+      border-bottom: 1px solid rgba(25,25,25,.88);
+      background: rgba(248,243,235,.96);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      width: min(var(--content), calc(100% - 76px));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 258px;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      background: var(--ink);
+      border-radius: 50%;
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-name {
+      padding-right: 18px;
+      border-right: 1px solid var(--ink);
+      font: 800 19px/1 var(--display);
+      letter-spacing: .11em;
+    }
+    .brand-caption {
+      max-width: 120px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.4vw, 36px);
+      margin-left: auto;
+    }
+    .nav a {
+      position: relative;
+      padding: 9px 0;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: 2px;
+      left: 0;
+      height: 3px;
+      background: var(--pink);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .18s ease;
+    }
+    .nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
+    .nav-cta {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      transition: color .18s, background .18s, transform .18s;
+    }
+    .nav-cta:hover { color: #fff; background: var(--ink); transform: translateY(-1px); }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 632px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero-wash {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 64%;
+      height: 100%;
+    }
+    .hero-inner {
+      position: relative;
+      width: min(1440px, 100%);
+      min-height: 632px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .99fr) minmax(0, 1.01fr);
+      align-items: stretch;
+      padding: 0 clamp(40px, 5vw, 76px);
+    }
+    .hero-copy {
+      z-index: 2;
+      align-self: center;
+      max-width: 670px;
+      padding: 42px 0 57px;
+    }
+    .eyebrow, .section-index {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0;
+      font: 700 11px/1.2 Consolas, "Courier New", monospace;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .eyebrow::after, .section-index::after {
+      width: 82px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      opacity: .75;
+    }
+    .hero h1 {
+      margin: 22px 0 14px;
+      font: 950 clamp(48px, 5vw, 70px)/1.25 var(--display);
+      letter-spacing: -.055em;
+      text-wrap: pretty;
+    }
+    .hero-line { display: block; }
+    .hero-tagline {
+      margin: 0;
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-top: 11px;
+      color: #2f2926;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .hero-tags span + span::before { content: "｜"; color: var(--pink-deep); padding: 0 7px; }
+    .hero-description {
+      max-width: 590px;
+      margin: 19px 0 0;
+      color: #504943;
+      font-size: 16px;
+      line-height: 1.82;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 23px; }
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      transition: background .18s, color .18s, transform .18s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-dark { color: #fff; background: var(--ink); }
+    .button-dark:hover { background: var(--pink-deep); border-color: var(--pink-deep); }
+    .button-light { background: rgba(255,250,243,.66); }
+    .button-light:hover { background: #fff; }
+    .hero-signoff {
+      margin: 20px 0 0;
+      color: var(--pink-deep);
+      font: 700 21px/1.05 "Brush Script MT", "Segoe Script", cursive;
+      letter-spacing: .01em;
+      transform: rotate(-3deg);
+      transform-origin: left;
+    }
+    .hero-signoff span { display: block; padding-left: 6px; }
+
+    .hero-art {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: clamp(4px, 2vw, 30px);
+      bottom: 0;
+      width: min(59%, 805px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: right bottom;
+      filter: drop-shadow(0 10px 6px rgba(62, 35, 33, .06));
+    }
+    .speech {
+      position: absolute;
+      z-index: 3;
+      top: 8%;
+      left: 11%;
+      min-width: 113px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper-light);
+      box-shadow: 2px 3px 0 rgba(25,25,25,.12);
+      font-size: 16px;
+      font-weight: 900;
+      text-align: center;
+      transform: rotate(-9deg);
+    }
+    .speech::after {
+      position: absolute;
+      right: 17px;
+      bottom: -8px;
+      width: 15px;
+      height: 15px;
+      border-right: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--paper-light);
+      content: "";
+      transform: skew(-18deg) rotate(35deg);
+    }
+    .hero-note {
+      position: absolute;
+      z-index: 3;
+      right: 1%;
+      bottom: 16%;
+      width: 70px;
+      padding: 9px 6px;
+      background: #fff9ef;
+      box-shadow: 3px 4px 0 rgba(25,25,25,.12);
+      font: 800 9px/1.4 Consolas, monospace;
+      text-align: center;
+      transform: rotate(5deg);
+    }
+    .hero-star {
+      position: absolute;
+      z-index: 2;
+      color: #d8ad58;
+      font: 35px/1 Georgia, serif;
+      text-shadow: 1px 1px #fff3ca;
+    }
+    .hero-star.one { top: 27%; left: 4%; transform: rotate(11deg); }
+    .hero-star.two { top: 19%; right: 14%; font-size: 43px; transform: rotate(9deg); }
+
+    .section-shell { width: min(var(--content), calc(100% - 76px)); margin: 0 auto; }
+    .games {
+      padding: 28px 0 38px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 19px;
+    }
+    .section-index { color: var(--ink); font-size: 11px; }
+    .section-title-row { display: flex; align-items: center; gap: 26px; margin-top: 7px; }
+    .section-head h2 {
+      margin: 0;
+      font: 950 clamp(34px, 3.65vw, 52px)/1.18 var(--display);
+      letter-spacing: -.045em;
+    }
+    .section-rule { flex: 1; min-width: 50px; height: 1px; background: var(--ink); }
+    .section-aside {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .section-aside svg { width: 27px; height: 27px; color: var(--pink-deep); }
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .game-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,250,243,.58);
+    }
+    .game-cover {
+      position: relative;
+      aspect-ratio: 3.15 / 1;
+      min-height: 145px;
+      overflow: hidden;
+      background: #eaded2;
+    }
+    .game-cover::before { content: ""; position: absolute; inset: 0; background-image: var(--cover-image); background-size: cover; background-position: center; transform: scale(1); transition: transform 1000ms cubic-bezier(.22,.61,.36,1); }
+    @media (hover: hover) and (pointer: fine) { .game-card:hover .game-cover::before { transform: scale(1.025); } }
+    .game-cover::after {
+      position: absolute;
+      inset: 54% 0 0;
+      background: linear-gradient(0deg, rgba(40,28,22,.20), transparent);
+      content: "";
+    }
+    .game-cover.moba { --cover-image: url("game-honor-of-kings-v2.webp"); }
+    .game-cover.apex { --cover-image: url("game-apex-legends-v2.webp"); }
+    .game-cover.palworld { --cover-image: url("game-palworld-v2.webp"); }
+    .game-cover.sky { --cover-image: url("game-sky-v2.webp"); }
+    .game-body { padding: 13px 18px 16px; }
+    .game-titleline { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+    .game-titleline h3 {
+      margin: 0;
+      font: 950 clamp(21px, 2vw, 28px)/1.25 var(--display);
+      letter-spacing: -.035em;
+    }
+    .genre {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 13px;
+      border-radius: 99px;
+      color: #8d4557;
+      background: #f5d7dc;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .game-stat {
+      margin: 4px 0 0;
+      font: 950 clamp(26px, 2.8vw, 38px)/1.2 var(--display);
+      letter-spacing: -.025em;
+    }
+    .game-result {
+      margin: 1px 0 0;
+      color: #4d4540;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .game-card.secondary .game-cover { aspect-ratio: 3.35 / 1; min-height: 126px; }
+    .game-card.secondary .game-body { padding: 11px 17px 14px; }
+    .game-card.secondary .game-stat { font-size: 25px; }
+    .game-card.secondary .game-result { font-size: 14px; }
+    .game-footnote {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 14px;
+      padding: 9px 16px;
+      border: 1px solid rgba(237,126,154,.28);
+      border-radius: 10px;
+      background: linear-gradient(90deg, #f9e0e3, #f5ccd4);
+      font-size: 13px;
+    }
+    .game-footnote strong { display: inline-flex; align-items: center; gap: 9px; font-weight: 900; }
+    .peanut-mark {
+      width: 18px;
+      height: 12px;
+      position: relative;
+      display: inline-block;
+      border: 2px solid var(--pink-deep);
+      border-radius: 48% 42% 45% 50%;
+      transform: rotate(-32deg);
+    }
+    .peanut-mark::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      border-left: 1px solid var(--pink-deep);
+      border-radius: 50%;
+      content: "";
+      transform: rotate(32deg);
+    }
+
+    @media (max-width: 900px) {
+      .topbar-inner { width: calc(100% - 36px); gap: 15px; }
+      .brand { min-width: 0; }
+      .brand-caption { display: none; }
+      .nav { gap: 14px; }
+      .nav a { font-size: 12px; }
+      .nav-cta { padding: 0 15px; }
+      .hero-inner { padding-inline: 34px; }
+      .hero h1 { font-size: clamp(43px, 6vw, 58px); }
+      .hero-art { right: 0; width: 54%; }
+      .hero-note { display: none; }
+      .section-shell { width: calc(100% - 44px); }
+    }
+    @media (max-width: 680px) {
+      .topbar, .topbar-inner { min-height: 62px; }
+      .topbar-inner { width: calc(100% - 28px); }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-name { padding-right: 10px; font-size: 16px; }
+      .nav { display: none; }
+      .nav-cta { min-height: 38px; padding: 0 13px; font-size: 12px; }
+      .hero { min-height: 0; }
+      .hero-inner {
+        min-height: 730px;
+        display: block;
+        padding: 0 23px;
+      }
+      .hero-copy { max-width: none; padding: 38px 0 300px; }
+      .hero h1 { max-width: 100%; margin-top: 18px; font-size: clamp(39px, 10.4vw, 49px); line-height: 1.24; }
+      .hero-line { display: inline; }
+      .hero-line::after { content: " "; }
+      .hero-description { max-width: 100%; font-size: 14px; }
+      .hero-tags { font-size: 12px; line-height: 1.8; }
+      .hero-tags span + span::before { padding: 0 4px; }
+      .hero-actions { gap: 9px; margin-top: 18px; }
+      .button { min-height: 43px; padding: 0 14px; font-size: 12px; }
+      .hero-signoff { margin-top: 16px; font-size: 13px; }
+      .hero-wash { width: 100%; height: 45%; top: auto; bottom: 0; }
+      .hero-art { top: auto; right: -5%; bottom: 0; width: 86%; height: 350px; }
+      .hero-art img { object-position: right bottom; }
+      .speech { top: auto; bottom: 35%; left: 13%; min-width: 96px; padding: 7px 10px; font-size: 13px; }
+      .hero-star.one { top: auto; bottom: 20%; left: 6%; }
+      .hero-star.two { top: auto; bottom: 30%; right: 7%; font-size: 32px; }
+      .section-shell { width: calc(100% - 30px); }
+      .games { padding: 23px 0 27px; }
+      .section-head { display: block; margin-bottom: 14px; }
+      .section-title-row { gap: 13px; margin-top: 6px; }
+      .section-head h2 { font-size: clamp(29px, 8.4vw, 37px); }
+      .section-aside { margin-top: 8px; font-size: 11px; }
+      .section-aside svg { width: 21px; height: 21px; }
+      .game-grid { grid-template-columns: 1fr; gap: 12px; }
+      .game-cover { aspect-ratio: 3.05 / 1; min-height: 0; }
+      .game-body { padding: 11px 13px 13px; }
+      .game-titleline h3 { font-size: 22px; }
+      .game-stat { font-size: 28px; }
+      .game-result { font-size: 12px; }
+      .game-card.secondary .game-cover { aspect-ratio: 3.3 / 1; min-height: 0; }
+      .game-footnote { align-items: flex-start; flex-direction: column; gap: 4px; padding: 9px 12px; font-size: 11px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    .content-section {
+      padding: 68px 0 76px;
+      border-bottom: 1px solid var(--ink);
+      scroll-margin-top: 88px;
+    }
+    .data-section { background: linear-gradient(180deg, rgba(255,250,243,.44), transparent 82%); }
+    .section-head .section-aside { justify-self: end; }
+    .process-band {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0 26px;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .process-step {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 250, 243, 0.92);
+      box-shadow: 0 2px 6px rgba(50, 40, 35, 0.03);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .process-step:hover {
+      transform: translateY(-2px);
+      border-color: #dba9b8;
+      box-shadow: 0 6px 16px rgba(219, 100, 131, 0.08);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 9px;
+    }
+    .step-num {
+      font: 800 10.5px/1 Consolas, monospace;
+      letter-spacing: 0.08em;
+      color: var(--pink-deep);
+      background: #fdf0f3;
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(219, 100, 131, 0.22);
+    }
+    .step-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease;
+    }
+    .process-step:nth-child(odd) .step-icon {
+      background: #eef5ee;
+      border: 1px solid #cee2d2;
+      color: #2b5f49;
+    }
+    .process-step:nth-child(even) .step-icon {
+      background: #fdf0f3;
+      border: 1px solid #ebd1d8;
+      color: #8c324a;
+    }
+    .step-icon .flow-icon {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.9;
+    }
+    .process-step:hover .step-icon {
+      transform: scale(1.08);
+    }
+    .step-content strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .step-content small {
+      display: block;
+      font-size: 11px;
+      color: #695e55;
+      margin-top: 3px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .process-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -13px;
+      top: calc(50% - 11px);
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fffaf5;
+      border: 1px solid #dfcfca;
+      color: var(--pink-deep);
+      font: 700 12px/18px Consolas, monospace;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      pointer-events: none;
+    }
+    .data-grid { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr); gap: 18px; }
+    .data-card {
+      min-width: 0;
+      padding: clamp(20px, 2.4vw, 30px);
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255,250,243,.82);
+    }
+    .data-card.primary { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,.82fr); gap: 22px; align-items: center; }
+    .case-kicker { margin: 0; color: var(--green); font: 700 10px Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .data-card h3, .operation-card h3, .tool-copy h3 {
+      margin: 10px 0 8px;
+      font: 950 clamp(22px, 2.15vw, 30px)/1.3 var(--display);
+      letter-spacing: -.035em;
+    }
+    .data-card p, .operation-card p, .tool-copy p { margin: 0; color: #514943; font-size: 15px; line-height: 1.8; }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .case-tags span {
+      padding: 5px 9px;
+      border-radius: 99px;
+      color: #416d5b;
+      background: #e6eee6;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .case-details { margin-top: 18px; border-top: 1px solid var(--line); }
+    .case-details summary {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .case-details summary::-webkit-details-marker { display: none; }
+    .case-details summary::after { content: "+"; color: var(--pink-deep); font: 700 20px/1 Georgia, serif; }
+    .case-details[open] summary::after { content: "−"; }
+    .details-copy { padding: 0 0 5px; color: #514943; font-size: 14px; line-height: 1.8; }
+    .details-copy p + p { margin-top: 10px; }
+    .delivery-visual {
+      min-height: 235px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid #d9d0c4;
+      border-radius: 9px;
+      background: linear-gradient(138deg, #f0e9dd, #fffaf3 70%);
+    }
+    .delivery-visual::before, .delivery-visual::after {
+      position: absolute;
+      right: -42px;
+      bottom: -57px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(67,134,109,.35);
+      border-radius: 50%;
+      content: "";
+    }
+    .delivery-visual::after { right: -10px; bottom: -84px; width: 150px; height: 150px; border-color: rgba(237,126,154,.42); }
+    .visual-label { position: relative; z-index: 1; color: var(--muted); font: 700 9px Consolas, monospace; letter-spacing: .13em; }
+    .doc-stack { position: relative; z-index: 1; width: 90%; display: grid; gap: 7px; transform: rotate(-2deg); }
+    .doc-row { display: grid; grid-template-columns: 1.2fr .75fr .7fr; gap: 5px; }
+    .doc-row span { height: 17px; border: 1px solid rgba(63,56,48,.12); background: rgba(255,255,255,.7); }
+    .doc-row:first-child span { height: 24px; background: #e8d6d2; }
+    .delivery-checks { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 7px; }
+    .delivery-checks span { padding: 4px 7px; border-radius: 5px; color: #356d56; background: #e5eee3; font-size: 10px; font-weight: 800; }
+    .visual-caption { position: relative; z-index: 1; color: var(--muted); font-size: 10px; }
+    .thesis-card { display: flex; flex-direction: column; }
+    .model-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 8px; margin-top: 20px; padding: 14px; border-radius: 8px; background: #e9efe8; }
+    .model-flow span:not(.flow-arrow) { text-align: center; font-size: 12px; font-weight: 900; }
+    .flow-arrow { color: var(--pink-deep); font-size: 18px; }
+    .model-note { margin-top: auto !important; padding-top: 18px; color: var(--muted) !important; font-size: 12px !important; }
+
+    .operations-section { background: rgba(244,237,227,.62); }
+    .operations-intro { max-width: 790px; margin: -3px 0 18px; color: #514943; font-size: 15px; line-height: 1.8; }
+    .operation-flow { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0; margin: 21px 0; padding: 8px 12px; border: 1px solid rgba(237,126,154,.22); border-radius: 10px; background: linear-gradient(90deg, #f8dce1, #f4c9d2); }
+    .operation-step {
+      position: relative;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      color: var(--ink);
+    }
+    .operation-step + .operation-step { border-left: 1px solid rgba(159,73,98,.22); }
+    .operation-step small { color: var(--pink-deep); font: 700 10px Consolas, monospace; letter-spacing: .12em; }
+    .operation-step strong { font-size: 14px; font-weight: 900; }
+    .operation-step:not(:last-child)::after { position: absolute; right: -7px; z-index: 1; color: var(--pink-deep); background: #f5d0d7; content: "→"; font-size: 15px; }
+    .operation-grid { display: grid; grid-template-columns: 1.04fr 1fr 1fr; gap: 14px; }
+    .operation-card { min-width: 0; padding: 21px; border: 1px solid var(--line); background: var(--paper-light); }
+    .operation-card:first-child { border-top: 4px solid var(--pink); }
+    .operation-card:nth-child(2) { border-top: 4px solid var(--green); }
+    .operation-card:nth-child(3) { border-top: 4px solid #d3ad5e; }
+    .operation-card h3 { font-size: 22px; }
+    .operation-card p { font-size: 14px; }
+    .operation-card .case-details { margin-top: 14px; }
+    .operation-outcome { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
+    .operation-outcome span { padding: 7px 10px; border-radius: 6px; color: #3c735d; background: #e6eee6; font-size: 12px; font-weight: 900; }
+    .boundary-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+
+    .ai-section { background: linear-gradient(180deg, rgba(246,204,212,.25), transparent 76%); }
+    .ai-ways { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0 20px; padding: 11px 15px; border-radius: 10px; background: #f5d0d7; }
+    .ai-ways span { flex: 1 1 auto; padding: 5px 14px; color: #794153; font-size: 13px; font-weight: 900; text-align: center; }
+    .ai-ways span + span { border-left: 1px solid rgba(191,83,111,.24); }
+    .tool-card { display: grid; grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-light); }
+    .tool-copy { align-self: center; padding: clamp(23px, 4vw, 46px); }
+    .tool-copy h3 { margin-top: 13px; font-size: clamp(27px, 3vw, 39px); }
+    .tool-copy p + p { margin-top: 12px; }
+    .role-split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 21px; }
+    .role-split div { padding: 12px; border-left: 3px solid var(--pink); background: #fbefef; }
+    .role-split div + div { border-left-color: var(--green); background: #edf2eb; }
+    .role-split b { display: block; margin-bottom: 4px; font-size: 12px; }
+    .role-split span { display: block; color: #5b534d; font-size: 11px; line-height: 1.6; }
+    .tool-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .tool-facts span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 6px; color: #514943; font-size: 11px; font-weight: 800; }
+    .tool-visual { min-width: 0; display: flex; flex-direction: column; padding: 23px; background: #f7e1e4; }
+    .image-trigger { position: relative; width: 100%; display: block; padding: 0; overflow: hidden; border: 0; border-radius: 9px; background: #fff; cursor: zoom-in; }
+    .image-trigger img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .22s ease; }
+    .image-trigger.interface-crop { aspect-ratio: 1.22 / 1; }
+    .image-trigger.interface-crop img { height: 100%; aspect-ratio: auto; object-position: 100% center; }
+    .image-trigger:hover img { transform: scale(1.02); }
+    .image-trigger::after { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; border-radius: 99px; color: #fff; background: rgba(25,25,25,.84); content: "放大查看"; font-size: 11px; font-weight: 800; }
+    .tool-caption { display: flex; justify-content: space-between; gap: 12px; margin-top: 11px; color: #514943; font-size: 11px; }
+    .tool-caption strong { font-weight: 900; }
+    .tool-caption span { color: var(--muted); }
+    .history-note { margin: 12px 0 0 !important; color: var(--muted) !important; font-size: 11px !important; }
+
+    .profile-section { padding-bottom: 68px; }
+    .education-grid { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 24px; }
+    .education-grid::before { position: absolute; top: 21px; right: 7%; left: 7%; height: 2px; background: #d4c8bc; content: ""; }
+    .education-card { position: relative; padding: 42px 20px 20px; border: 1px solid var(--line); background: rgba(255,250,243,.78); }
+    .education-card::before { position: absolute; top: 13px; left: 20px; width: 16px; height: 16px; border: 4px solid var(--paper); border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 1px var(--pink-deep); content: ""; }
+    .education-card:nth-child(2)::before { background: var(--green); box-shadow: 0 0 0 1px var(--green); }
+    .education-card:nth-child(3)::before { background: #d2a64f; box-shadow: 0 0 0 1px #b08b3f; }
+    .edu-date { display: block; margin-bottom: 9px; color: var(--pink-deep); font: 700 11px Consolas, monospace; letter-spacing: .07em; }
+    .education-card h3 { margin: 0 0 5px; font: 900 19px/1.45 var(--display); }
+    .education-card p { margin: 0; color: #5b534d; font-size: 13px; line-height: 1.75; }
+    .education-card p + p { margin-top: 6px; }
+    .education-art { position: relative; margin: 0 0 15px; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(137,111,93,.28); border-radius: 8px; background: #eee3d5; box-shadow: 0 5px 0 rgba(196,177,156,.28); }
+    .education-art img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1), filter .25s; }
+    .education-art::after { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 58%, rgba(54,38,30,.13)); content: ""; }
+    .education-card:hover .education-art img { transform: scale(1.025); filter: saturate(1.035); }
+    .profile-footnote { margin: 16px 0 0; color: var(--muted); font-size: 12px; }
+
+    .life-section { background: #f7f0e8; }
+    .life-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 22px; }
+    .life-card { overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: var(--paper-light); transition: border-color .35s; }
+    .life-art { position: relative; overflow: hidden; aspect-ratio: 3.5 / 1; }
+    .life-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("life-atmospheres-v1.png");
+      background-size: 200% auto;
+      background-repeat: no-repeat;
+      transform: scale(1);
+      transition: transform 1000ms cubic-bezier(.22,.61,.36,1), filter .25s;
+    }
+    .life-art.gym::before { background-position: 0% 84%; transform-origin: 30% 75%; }
+    .life-art.swim::before { background-position: 100% 88%; transform-origin: 50% 75%; }
+    @media (hover: hover) and (pointer: fine) {
+      .life-card:hover { border-color: #dba9b8; }
+      .life-card:hover .life-art::before,
+      .life-art:hover::before { transform: scale(1.025); filter: saturate(1.035); }
+    }
+    .life-copy { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 12px 16px 14px; }
+    .life-copy h3 { margin: 0; font: 900 19px var(--display); }
+    .life-copy p { margin: 0; color: var(--muted); font-size: 13px; }
+    .life-note { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 0 42px;
+      background:
+        radial-gradient(circle at 83% 22%, rgba(255,255,255,.35), transparent 20rem),
+        linear-gradient(110deg, #f5c4cf, #f7dce0);
+    }
+    .closing-inner { position: relative; width: min(var(--content), calc(100% - 76px)); min-height: 190px; margin: 0 auto; display: grid; grid-template-columns: 150px minmax(0,1fr) 260px; align-items: center; gap: 24px; }
+    .closing-anya { width: 145px; height: 155px; object-fit: contain; object-position: center bottom; align-self: end; }
+    .closing-copy { text-align: center; }
+    .closing-copy .section-index { justify-content: center; }
+    .closing-copy h2 { margin: 12px 0 18px; font: 950 clamp(30px,4vw,48px)/1.25 var(--display); letter-spacing: -.04em; }
+    .closing-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 11px; }
+    .closing-actions .button { min-width: 136px; }
+    .closing-side { display: grid; justify-items: end; gap: 12px; }
+    .contact-email { font-size: 13px; font-weight: 900; text-underline-offset: 3px; text-decoration: underline; }
+    .greet-button { min-height: 44px; padding: 0 14px; border: 1px solid var(--ink); border-radius: 99px; background: rgba(255,250,243,.72); cursor: pointer; font-size: 12px; font-weight: 900; }
+    .greet-button:hover { background: #fff; }
+    .greet-bubble { min-height: 28px; color: var(--pink-deep); font: italic 700 14px Georgia,serif; opacity: 0; transform: translateY(4px); transition: opacity .18s, transform .18s; }
+    .greet-bubble.visible { opacity: 1; transform: translateY(0); }
+    .copy-email { min-height: 38px; padding: 0 12px; border: 1px solid rgba(25,25,25,.42); border-radius: 7px; background: rgba(255,250,243,.54); cursor: pointer; font-size: 11px; font-weight: 850; }
+    .copy-email:hover { background: #fffaf3; }
+    .copy-status { min-height: 18px; color: #4b6553; font-size: 10px; }
+    .back-top { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 900; text-decoration: underline; text-underline-offset: 4px; }
+    .footer { color: #f8f3eb; background: #191919; }
+    .footer-inner { width: min(var(--content), calc(100% - 76px)); min-height: 54px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; font: 10px Consolas,monospace; letter-spacing: .12em; }
+
+    .media-viewer { width: min(1080px, calc(100vw - 48px)); max-width: none; max-height: calc(100dvh - 48px); padding: 18px; border: 1px solid rgba(255,255,255,.5); border-radius: 12px; background: #fffaf3; box-shadow: 0 20px 80px rgba(0,0,0,.25); }
+    .media-viewer::backdrop { background: rgba(25,25,25,.78); backdrop-filter: blur(4px); }
+    .viewer-close { position: sticky; z-index: 2; top: 0; float: right; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: #fffaf3; cursor: pointer; font-size: 23px; }
+    .viewer-figure { clear: both; margin: 0; max-height: calc(100dvh - 105px); overflow: auto; text-align: center; }
+    .viewer-figure img { width: auto; max-width: 100%; height: auto; max-height: calc(100dvh - 150px); margin: 0 auto; object-fit: contain; }
+    .viewer-figure img.viewer-crop { width: min(92vw, 820px); height: min(82dvh, 980px); object-fit: cover; object-position: 100% center; }
+    .viewer-figure figcaption { padding: 10px 0 2px; color: var(--muted); font-size: 12px; }
+
+    .mobile-directory { display: none; position: relative; }
+    .mobile-directory summary { min-height: 40px; display: inline-flex; align-items: center; gap: 7px; padding: 0 12px; border: 1px solid var(--line-dark); border-radius: 8px; background: var(--paper-light); cursor: pointer; font-size: 12px; font-weight: 900; list-style: none; }
+    .mobile-directory summary::-webkit-details-marker { display: none; }
+    .mobile-directory summary::after { content: "⌄"; color: var(--pink-deep); font-size: 14px; }
+    .mobile-directory nav { position: absolute; z-index: 30; top: calc(100% + 8px); right: 0; width: min(240px, calc(100vw - 28px)); padding: 7px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper-light); box-shadow: 0 12px 28px rgba(35,28,24,.16); }
+    .mobile-directory nav a { min-height: 46px; display: flex; align-items: center; padding: 0 12px; border-radius: 7px; font-size: 14px; font-weight: 850; }
+    .mobile-directory nav a:hover, .mobile-directory nav a.is-active { color: #9d4960; background: #f8e6e8; }
+
+    @media (max-width: 760px) {
+      .topbar-inner { position: relative; }
+      .nav { display: none; }
+      .mobile-directory { position: static; display: block; margin-left: auto; }
+      .nav-cta { flex: 0 0 auto; }
+      .hero-inner { min-height: 0; display: flex; flex-direction: column; padding: 0 23px; }
+      .hero-copy { width: 100%; max-width: none; padding: 34px 0 0; }
+      .hero h1 { max-width: 100%; margin-top: 18px; font-size: clamp(36px, 9.3vw, 50px); line-height: 1.24; }
+      .hero-line { display: inline; }
+      .hero-line::after { content: " "; }
+      .hero-description { max-width: 100%; margin-top: 16px; font-size: 14px; }
+      .hero-tags { font-size: 12px; line-height: 1.8; }
+      .hero-actions { gap: 9px; margin-top: 17px; }
+      .button { min-height: 44px; padding: 0 14px; font-size: 12px; }
+      .hero-signoff { margin: 14px 0 0; font-size: 12px; }
+      .hero-art { position: relative; top: auto; right: auto; bottom: auto; width: 100%; height: 315px; margin: 0 auto; justify-content: center; }
+      .hero-art img { width: min(100%, 380px); height: 100%; object-position: center bottom; }
+      .speech { top: 8px; bottom: auto; left: 13%; min-width: 90px; padding: 7px 10px; font-size: 13px; }
+      .hero-note { display: none; }
+      .hero-star.one { top: 41%; bottom: auto; left: 3%; font-size: 25px; }
+      .hero-star.two { top: 18%; bottom: auto; right: 3%; font-size: 30px; }
+      .hero-wash { width: 100%; height: 42%; top: auto; bottom: 0; }
+      .section-shell { width: calc(100% - 32px); }
+      .content-section { padding: 42px 0 48px; }
+      .section-head { display: block; margin-bottom: 14px; }
+      .section-title-row { gap: 0; margin-top: 7px; }
+      .section-rule { display: none; }
+      .section-head h2 { font-size: clamp(28px, 8.4vw, 38px); }
+      .section-head .section-aside { justify-self: auto; margin-top: 8px; font-size: 11px; }
+      .process-band { grid-template-columns: 1fr; gap: 0; margin: 14px 0; padding: 6px 12px; }
+      .process-item { min-height: 44px; padding: 5px 4px; }
+      .process-item + .process-item { border-top: 1px solid rgba(159,73,98,.22); border-left: 0; }
+      .process-item strong { font-size: 13px; }
+      .data-grid, .data-card.primary, .operation-grid, .tool-card, .education-grid, .life-grid { grid-template-columns: 1fr; }
+      .data-grid { gap: 12px; }
+      .data-card { padding: 18px; }
+      .data-card.primary { gap: 16px; }
+      .delivery-visual { min-height: 190px; }
+      .model-flow { gap: 5px; padding: 11px 8px; }
+      .model-flow span:not(.flow-arrow) { font-size: 10px; }
+      .operations-intro { font-size: 14px; }
+      .operation-flow { grid-template-columns: 1fr; gap: 7px; margin: 14px 0; }
+      .operation-step { min-height: 46px; justify-content: flex-start; gap: 12px; padding: 8px 7px; }
+      .operation-step + .operation-step { border-top: 1px solid rgba(159,73,98,.22); border-left: 0; }
+      .operation-step:not(:last-child)::after { right: auto !important; bottom: -11px; left: 18px; z-index: 2; color: var(--pink-deep); background: var(--paper-light); content: "↓" !important; font-size: 12px !important; }
+      .operation-card { padding: 18px; }
+      .operation-card h3 { font-size: 21px; }
+      .ai-ways { display: grid; grid-template-columns: 1fr; margin: 14px 0; padding: 5px 12px; }
+      .ai-ways span { padding: 8px 3px; text-align: left; }
+      .ai-ways span + span { border-top: 1px solid rgba(191,83,111,.24); border-left: 0; }
+      .tool-copy { padding: 21px; }
+      .tool-copy h3 { font-size: 28px; }
+      .role-split { grid-template-columns: 1fr; gap: 7px; }
+      .tool-visual { padding: 14px; }
+      .education-grid { gap: 11px; margin-top: 14px; }
+      .education-grid::before { top: 19px; bottom: 15px; left: 27px; width: 2px; height: auto; }
+      .education-card { padding: 17px 15px 17px 53px; }
+      .education-card::before { top: 17px; left: 20px; }
+      .education-card h3 { font-size: 17px; }
+      .life-grid { gap: 12px; margin-top: 14px; }
+      .life-art { aspect-ratio: 2.7 / 1; }
+      .life-copy { align-items: flex-start; flex-direction: column; gap: 2px; padding: 10px 13px 12px; }
+      .life-copy p { font-size: 12px; }
+      .closing { padding: 30px 0 26px; }
+      .closing-inner { width: calc(100% - 32px); min-height: 0; grid-template-columns: 86px minmax(0,1fr); gap: 12px; }
+      .closing-anya { width: 86px; height: 110px; grid-row: 1 / span 2; align-self: end; }
+      .closing-copy { text-align: left; }
+      .closing-copy .section-index { justify-content: flex-start; }
+      .closing-copy h2 { margin: 10px 0 13px; font-size: clamp(25px,7.2vw,34px); }
+      .closing-actions { justify-content: flex-start; gap: 7px; }
+      .closing-actions .button { min-width: 0; padding-inline: 11px; }
+      .closing-side { grid-column: 2; justify-items: start; gap: 7px; }
+      .greet-button { min-height: 44px; font-size: 11px; }
+      .greet-bubble { min-height: 20px; }
+      .footer-inner { width: calc(100% - 32px); min-height: 50px; font-size: 8px; letter-spacing: .06em; }
+      .media-viewer { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); padding: 10px; }
+      .viewer-figure { max-height: calc(100dvh - 82px); }
+      .viewer-figure img { max-height: calc(100dvh - 130px); }
+    }
+    @media (max-width: 360px) {
+      .topbar-inner { width: calc(100% - 20px); gap: 7px; }
+      .brand { gap: 7px; }
+      .brand-mark { width: 29px; height: 29px; }
+      .brand-mark svg { width: 17px; height: 17px; }
+      .brand-name { padding-right: 0; border: 0; font-size: 13px; letter-spacing: .06em; }
+      .mobile-directory summary { min-height: 36px; gap: 4px; padding: 0 8px; font-size: 11px; }
+      .nav-cta { min-height: 36px; padding: 0 9px; font-size: 10px; }
+      .hero-inner { padding-inline: 17px; }
+      .section-shell { width: calc(100% - 26px); }
+      .closing-inner { width: calc(100% - 26px); }
+      .game-titleline { gap: 8px; }
+      .game-titleline h3 { font-size: 20px; }
+      .game-stat { font-size: 26px; }
+      .footer-inner { width: calc(100% - 26px); }
+    }
+  </style>
+  <link rel="stylesheet" href="desktop-refinement.css">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute"><defs><symbol id="icon-document" viewBox="0 0 24 24"><path d="M7 3h8l5 5v13H7zM15 3v6h5M10 13h7M10 17h7"/></symbol><symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 21V12h4v9M11 21V7h4v14M18 21V3h4v18"/></symbol><symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="4" width="19" height="17" rx="2"/><circle cx="9" cy="9" r="1.5"/><path d="m4 18 6-5 4 3 4-6 4 6"/></symbol><symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></symbol><symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="M3 10h5l12-5v14L8 14H3zM8 14l2 7h4l-3-6M20 10l3-1M20 14l3 1"/></symbol><symbol id="icon-people" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="18" cy="8" r="2.5"/><path d="M2 21v-4a7 7 0 0 1 14 0v4zM16 14a5 5 0 0 1 7 4v3h-4"/></symbol><symbol id="icon-box" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5v11l-9 4-9-4zM3 8l9 5 9-5M12 13v10M8 5l9 5"/></symbol><symbol id="icon-headset" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v7h5v-7zM20 12h2v7h-5v-7zM20 19v3h-7"/></symbol></defs></svg>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.2 3.5c2.2-1.5 5.1-1.1 6.6 1l1.1 1.6c1.8-.1 3.4.9 3.9 2.6.5 1.8-.5 3.7-2.2 4.4l1 1.5a3.7 3.7 0 0 1-6.1 4.2l-1.2-1.7c-2 .4-4.1-.4-5.3-2.1l-2.4-3.4A5.6 5.6 0 0 1 8.2 3.5Z"/></svg>
+        </span>
+        <span class="brand-name">TIANYU</span>
+        <span class="brand-caption">热爱游戏，<br>也认真把事情做好。</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#games" class="is-active">游戏档案</a>
+        <a href="#data">数据实践</a>
+        <a href="#operations">运营经历</a>
+        <a href="#ai">AI 应用</a>
+        <a href="#profile">关于我</a>
+      </nav>
+      <details class="mobile-directory">
+        <summary>目录</summary>
+        <nav aria-label="移动端目录">
+          <a href="#games">游戏档案</a>
+          <a href="#data">数据实践</a>
+          <a href="#operations">运营经历</a>
+          <a href="#ai">AI 应用</a>
+          <a href="#profile">关于我</a>
+          <a href="#life">生活片段</a>
+          <a href="#contact">联系</a>
+        </nav>
+      </details>
+      <a class="nav-cta" href="#contact">打个招呼 ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <svg class="hero-wash" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+        <defs><filter id="paper-edge" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="3" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="8" xChannelSelector="R" yChannelSelector="G"/></filter><linearGradient id="hero-pink" x1=".1" y1=".1" x2=".9" y2="1"><stop stop-color="#f4b9c5"/><stop offset="1" stop-color="#f7d4d9"/></linearGradient></defs>
+        <path d="M140 0 C105 130 130 280 88 410 C105 530 37 650 50 750 C20 850 35 930 12 1000 L1000 1000 L1000 0 Z" fill="url(#hero-pink)"/>
+      </svg>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">HELLO, I'M TIANYU</p>
+          <h1 id="hero-title">
+            <span class="hero-line">你好，我是高天宇。</span>
+            <span class="hero-line">认真玩游戏，</span>
+            <span class="hero-line">也认真把事情做好。</span>
+          </h1>
+          <div class="hero-tags" aria-label="个人身份">
+            <span>2027 届硕士</span><span>深度游戏玩家</span><span>数据分析与 AI 实践</span>
+          </div>
+          <p class="hero-description">我是长期投入 MOBA、FPS 的玩家，也做数据处理与分析，和合作者一起运营 AI 数字服务。从游戏到工作，我喜欢把问题拆开、动手尝试，再认真检查结果。</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#games">看我的经历 <span aria-hidden="true">↓</span></a>
+            <a class="button button-light" href="高天宇-求职简历-v19.pdf" target="_blank" rel="noopener">查看简历 <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-signoff">Good Games<span>Better People! ✦</span></p>
+        </div>
+        <div class="hero-art">
+          <img src="hero-anya-v1.png" alt="">
+          <span class="speech" id="hero-speech" aria-live="polite">わくわく！</span>
+          <button class="hero-note peanut-button" type="button" id="peanut-button" aria-label="给 Anya 一颗花生" hidden>
+            <span class="peanut-caption">PEANUT CLUB</span>
+            <svg class="peanut-drawing" viewBox="0 0 56 70" aria-hidden="true"><path d="M32 4c13 0 20 12 13 23-4 6-5 10-3 17 4 14-8 24-20 21C8 62 4 48 13 37c5-6 6-9 5-15C16 12 22 4 32 4Z" fill="#e8bc75" stroke="#775333" stroke-width="2"/><path d="m26 12 13 9m-17-1 14 10m-17 9 15 10m-17-1 16 10M34 10 19 58m22-39-16 42" fill="none" stroke="#b88749" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <span class="peanut-label">给 Anya<br>一颗花生</span>
+            <span class="peanut-stamps" aria-hidden="true"><i></i><i></i><i></i></span>
+          </button>
+          <span class="hero-star one" aria-hidden="true">☆</span>
+          <span class="hero-star two" aria-hidden="true">☆</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="games" id="games" aria-labelledby="games-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">01 / PLAYER ARCHIVE</p>
+            <div class="section-title-row">
+              <h2 id="games-title">这些游戏，我认真玩过。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">
+            游戏让我看到更大的世界。
+            <svg viewBox="0 0 32 26" fill="none" aria-hidden="true"><path d="M8 3h5v6H8zM19 3h5v6h-5zM4 10h24v10h-6l-5 4-5-4H4z" fill="currentColor"/><circle cx="10.5" cy="14.5" r="1.2" fill="#fff"/><circle cx="21.5" cy="14.5" r="1.2" fill="#fff"/></svg>
+          </p>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card">
+            <div class="game-cover moba" role="img" aria-label="参考《王者荣耀》官方战场画面特征重绘的多人竞技主题插画"></div>
+            <div class="game-body">
+              <div class="game-titleline"><h3>王者荣耀</h3><span class="genre">MOBA</span></div>
+              <p class="game-stat">约 14,000 场</p>
+              <p class="game-result">百星王者 · 巅峰赛约 2000 分</p>
+            </div>
+          </article>
+          <article class="game-card">
+            <div class="game-cover apex" role="img" aria-label="参考《Apex Legends》官方角色与战场画面特征重绘的小队竞技主题插画"></div>
+            <div class="game-body">
+              <div class="game-titleline"><h3>Apex Legends</h3><span class="genre">FPS</span></div>
+              <p class="game-stat">约 4,000 小时</p>
+              <p class="game-result">达到大师段位</p>
+            </div>
+          </article>
+          <article class="game-card secondary">
+            <div class="game-cover palworld" role="img" aria-label="参考《幻兽帕鲁》官方世界与伙伴形象特征重绘的开放世界主题插画"></div>
+            <div class="game-body">
+              <div class="game-titleline"><h3>幻兽帕鲁</h3><span class="genre">开放世界 · 生存养成</span></div>
+              <p class="game-stat">约 500 小时</p>
+              <p class="game-result">长期体验开放世界与生存养成玩法</p>
+            </div>
+          </article>
+          <article class="game-card secondary">
+            <div class="game-cover sky" role="img" aria-label="参考《光·遇》官方云海与旅人形象特征重绘的社交冒险主题插画"></div>
+            <div class="game-body">
+              <div class="game-titleline"><h3>光 · 遇</h3><span class="genre">社交冒险</span></div>
+              <p class="game-stat">持续体验约 1—2 年</p>
+              <p class="game-result">长期体验社交冒险品类</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="game-footnote">
+          <strong><span class="peanut-mark" aria-hidden="true"></span> 也体验过：崩坏 3</strong>
+          <span>从竞技对局到开放世界，收藏不同的游戏体验。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section data-section" id="data" aria-labelledby="data-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">02 / DATA PRACTICE</p>
+            <div class="section-title-row">
+              <h2 id="data-title">把数据理清楚，把结果讲明白。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">把严谨的工程与建模经验，转化为业务数据的敏锐度。</p>
+        </div>
+
+        <div class="process-band" aria-label="数据工作全链路流程">
+          <div class="process-step">
+            <div class="step-header">
+              <span class="step-num">01</span>
+              <div class="step-icon"><svg class="flow-icon" aria-hidden="true"><use href="#icon-document"></use></svg></div>
+            </div>
+            <div class="step-content">
+              <strong>资料整理</strong>
+              <small>多源异构清洗与格式转换</small>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-header">
+              <span class="step-num">02</span>
+              <div class="step-icon"><svg class="flow-icon" aria-hidden="true"><use href="#icon-search"></use></svg></div>
+            </div>
+            <div class="step-content">
+              <strong>异常质检</strong>
+              <small>脚本筛查与质量打标(Flag)</small>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-header">
+              <span class="step-num">03</span>
+              <div class="step-icon"><svg class="flow-icon" aria-hidden="true"><use href="#icon-chart"></use></svg></div>
+            </div>
+            <div class="step-content">
+              <strong>统计分析</strong>
+              <small>时序演变与模型训练调参</small>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-header">
+              <span class="step-num">04</span>
+              <div class="step-icon"><svg class="flow-icon" aria-hidden="true"><use href="#icon-image"></use></svg></div>
+            </div>
+            <div class="step-content">
+              <strong>图表输出</strong>
+              <small>高维数据图件与规格文档</small>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-header">
+              <span class="step-num">05</span>
+              <div class="step-icon"><svg class="flow-icon" aria-hidden="true"><use href="#icon-check"></use></svg></div>
+            </div>
+            <div class="step-content">
+              <strong>复核交付</strong>
+              <small>闭环校验与现场验收</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-grid">
+          <article class="data-card primary">
+            <div class="data-copy">
+              <p class="case-kicker">DATA OPERATIONS · 复杂时序数据</p>
+              <h3>多源大规模数据批处理与规格化交付</h3>
+              <div class="data-badges" aria-label="核心能力与场景">
+                <span>Python 自动化批处理</span>
+                <span>异常筛查 &amp; 质量标识(Flag)</span>
+                <span>数据规格表与技术文档</span>
+                <span>现场驻场配合验收</span>
+              </div>
+              <p class="data-lead">在重大科研数据项目中，负责从海量离散原始观测文件到标准化交付成果的全链路整理。编写自动化 Python 批处理脚本，攻克多源异构格式转换与时空网格统一，建立双重异常质检与质量标识机制，并参与编制团队数据规范与现场验收交付。</p>
+              
+              <div class="model-flow" aria-label="数据整理流程">
+                <span>异构解包与对齐</span><span class="flow-arrow" aria-hidden="true">→</span>
+                <span>异常筛查打标</span><span class="flow-arrow" aria-hidden="true">→</span>
+                <span>规格表与验收</span>
+              </div>
+
+              <div class="data-features">
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">⚙</span>
+                  <div class="data-feature-content">
+                    <strong>自动化批处理与格式转换：</strong><span>负责海量连续时序与网格观测资料（含 NetCDF 等科研格式）的批量下载、解包清洗与网格统一，将多源碎片数据整合为可直接调用的规范数据集。</span>
+                  </div>
+                </div>
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">🛡</span>
+                  <div class="data-feature-content">
+                    <strong>异常值筛查与质量打标（Flagging）：</strong><span>编写脚本进行多维阈值初筛与极值检测，结合人工对照与图表可视化复核，为缺测和异常数据标定质量标识，保障底层数据真实可信。</span>
+                  </div>
+                </div>
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">📋</span>
+                  <div class="data-feature-content">
+                    <strong>规格表编制与驻场验收支持：</strong><span>参与编写团队内部数据格式与字段规范，整理数据规格表；后期前往北京现场驻场，根据阶段性格式变更重跑脚本并批量修订数据，协同配合项目通过最终验收。</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="data-card-quote">一次交付，既有数据，也有说明。<span>把处理结果与字段规范一起整理，让后续排查、分析与交接有据可循。</span></p>
+
+              <details class="case-details">
+                <summary>展开查看工程细节与驻场经验</summary>
+                <div class="details-copy">
+                  <p><strong>脚本与工具协同：</strong>借助 AI 工具协同起草和排查 Python 处理脚本，将实际业务数据与大模型网络隔离。在本地环境先用小样本样例验证处理逻辑无误后，再推进全量多源观测数据的批量清洗与格式转换。</p>
+                  <p><strong>应对格式规范更新：</strong>项目后期在北京现场驻场支持期间，面对验收方阶段性格式要求与字段变动，快速定位需要调整的批处理脚本节点，按新规范重新转换、校验数据并汇总图件，保障团队顺利通过验收交付。</p>
+                </div>
+              </details>
+            </div>
+            <figure class="data-illustration">
+              <img src="data-preparation-v1.webp" width="1942" height="809" loading="lazy" decoding="async" alt="资料、数据表与交付文档的工作主题插画">
+            </figure>
+          </article>
+
+          <article class="data-card thesis-card">
+            <div class="data-copy">
+              <p class="case-kicker">TREND &amp; PREDICTION · 机器学习实战</p>
+              <h3>长周期时序趋势分析与机器学习验证</h3>
+              <div class="data-badges" aria-label="研究重点与方法">
+                <span>长周期时序特征工程</span>
+                <span>极端事件指标提取</span>
+                <span>随机森林 &amp; XGBoost</span>
+                <span>交叉验证与指标比对</span>
+              </div>
+              <p class="data-lead">围绕硕士课题《南海北部海洋热浪长期趋势演变研究》，对跨年度长周期多源连续时序数据开展时空统计与特征分析。本人独立完成随机森林与 XGBoost 模型的特征选择、超参数调优及交叉验证，严谨输出论文图表并复核关键统计结论。</p>
+
+              <div class="model-flow" aria-label="研究工作过程示意">
+                <span>长时序清洗对齐</span><span class="flow-arrow" aria-hidden="true">→</span>
+                <span>特征工程与降维</span><span class="flow-arrow" aria-hidden="true">→</span>
+                <span>模型验证与复核</span>
+              </div>
+
+              <div class="data-features">
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">📈</span>
+                  <div class="data-feature-content">
+                    <strong>长周期时序与极端指标提取：</strong><span>针对多源连续时间序列网格数据，完成时空插值对齐与缺测处理，提取长周期演变趋势与极端事件的关键特征指标（频次、持续时长、峰值强度等）。</span>
+                  </div>
+                </div>
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">🤖</span>
+                  <div class="data-feature-content">
+                    <strong>独立机器学习建模与调参：</strong><span>独立负责特征相关性分析与降维筛选，比对随机森林与 XGBoost 模型性能，完成参数优化与严格的 K 折交叉验证（防范过拟合），以 RMSE / MAE 等综合指标评估模型表现。</span>
+                  </div>
+                </div>
+                <div class="data-feature-item">
+                  <span class="data-feature-icon" aria-hidden="true">📊</span>
+                  <div class="data-feature-content">
+                    <strong>学术级图件与全流程闭环复核：</strong><span>基于 Python 绘制多维空间场分布与演变对比学术图件；对特征衍生、模型预测与关键统计推论进行全链路多重校验，确保结论扎实严密。</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="data-card-quote">一次分析，既重特征，也重闭环。<span>把特征工程与模型验证做扎实，让业务与科学推论经得起反复推敲。</span></p>
+
+              <details class="case-details">
+                <summary>展开查看建模细节与论文背景</summary>
+                <div class="details-copy">
+                  <p><strong>课题研究背景：</strong>论文研究围绕南海北部海洋热浪（MHW）的长期演变规律展开。面对多源多维时空网格资料，需要兼顾大时间跨度与区域特征，对多组特征变量开展相关性分析与降维筛选。</p>
+                  <p><strong>独立机器学习实操：</strong>在导师指导下由本人独立负责建模全流程，比对随机森林与 XGBoost 在极端事件特征捕捉中的表现；通过严格的 K 折交叉验证与评估指标检验，防范过拟合，并将结果整理为学术论文图表。</p>
+                </div>
+              </details>
+            </div>
+            <figure class="data-illustration">
+              <img src="data-analysis-v1.webp" width="1942" height="809" loading="lazy" decoding="async" alt="趋势图、放大镜与分析工作台的主题插画，图表为装饰示意">
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section operations-section" id="operations" aria-labelledby="operations-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">03 / USER &amp; CONTENT</p>
+            <div class="section-title-row">
+              <h2 id="operations-title">从内容到用户，把每一步接起来。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">和合作者共同参与 AI 数字服务项目。</p>
+        </div>
+        <p class="operations-intro">自 2026 年 5 月起，我与合作者共同运营 AI 数字服务。使用第三方商户系统，一起完成从内容推广、用户咨询到订单履约与售后的日常工作。</p>
+
+        <div class="operation-flow" aria-label="运营流程">
+          <div class="operation-step"><svg class="flow-icon" aria-hidden="true"><use href="#icon-document"></use></svg><strong>内容制作</strong></div>
+          <div class="operation-step"><svg class="flow-icon" aria-hidden="true"><use href="#icon-megaphone"></use></svg><strong>渠道触达</strong></div>
+          <div class="operation-step"><svg class="flow-icon" aria-hidden="true"><use href="#icon-people"></use></svg><strong>社群承接</strong></div>
+          <div class="operation-step"><svg class="flow-icon" aria-hidden="true"><use href="#icon-box"></use></svg><strong>订单履约</strong></div>
+          <div class="operation-step"><svg class="flow-icon" aria-hidden="true"><use href="#icon-headset"></use></svg><strong>人工售后</strong></div>
+        </div>
+
+        <div class="operation-grid">
+          <article class="operation-card">
+            <p class="case-kicker">CONTENT &amp; CHANNEL</p>
+            <h3>内容与渠道</h3>
+            <p>用 AI 辅助制作推广文案、商品介绍和图片。原有渠道受限后，调整触达方式，尝试新的内容入口，并逐步转向社群口碑与用户转介绍。</p>
+            <details class="case-details">
+              <summary>展开查看渠道调整</summary>
+              <div class="details-copy">
+                <p>前期通过小红书内容触达并建立社群；账号受限后，转向抖音评论区等触点，后续更多依靠社群口碑与用户转介绍。</p>
+              </div>
+            </details>
+          </article>
+          <article class="operation-card">
+            <p class="case-kicker">COMMUNITY</p>
+            <h3>社群与沟通</h3>
+            <p>共同维护用户 QQ 群，组织群活动，人工回复咨询。把内容带来的关注承接到群里，继续处理用户的购买需求和使用问题。</p>
+            <div class="operation-outcome"><span>群活动</span><span>咨询回复</span><span>用户转介绍</span></div>
+          </article>
+          <article class="operation-card">
+            <p class="case-kicker">ORDER &amp; SERVICE</p>
+            <h3>履约与服务</h3>
+            <p>共同管理商品、卡密、售价和订单，跟进交易履约，再通过人工售后处理咨询。项目实现了正向收益，也积累了与真实用户沟通的经验。</p>
+            <details class="case-details">
+              <summary>展开查看日常协作</summary>
+              <div class="details-copy">
+                <p>我与合作者没有固定分工，共同处理商品、价格、订单、推广和售后。商户系统承担交易管理，AI 辅助制作推广材料，用户咨询由我们人工回复。</p>
+              </div>
+            </details>
+          </article>
+          <aside class="community-note" aria-label="项目规模">
+            <p>一起维护的用户群</p>
+            <strong><small>约</small> 200 <small>人</small></strong>
+            <p>AI 数字服务 · QQ 社群</p>
+            <p class="note-bottom">共同运营，持续沟通。<br>项目已实现正向收益</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section ai-section" id="ai" aria-labelledby="ai-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">04 / AI IN PRACTICE</p>
+            <div class="section-title-row">
+              <h2 id="ai-title">让 AI 参与工作，把判断留给自己。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">工具帮忙实现，结果仍要亲自检查。</p>
+        </div>
+        <div class="ai-ways" aria-label="AI参与方式">
+          <span>脚本辅助与排查</span><span>文案、图片与文档整理</span><span>个人工具需求与验证</span>
+        </div>
+
+        <article class="tool-card focus-showcase">
+          <div class="focus-product">
+            <img class="focus-main-screen" src="main-working.webp" alt="Anya Focus 正在专注的实际桌面界面" width="600" height="925" loading="lazy" decoding="async">
+            <div class="focus-floating-preview"><img src="floating-working.png" alt="桌面悬浮计时圆环" width="110" height="110" loading="lazy"><span>小小一只，<br>帮你看时间。</span></div>
+          </div>
+          <div class="tool-copy">
+            <p class="case-kicker">PERSONAL TOOL · AI COLLABORATION</p>
+            <h3>Anya Focus</h3>
+            <p class="tool-subtitle">认真专注，也要被提醒着好好休息。</p>
+            <p>我常常把休息推迟到“忙完这一点再说”，然后又多坐了很久。于是，我把这个日常困扰做成了一个有 Anya 陪伴的桌面工具：工作时安静计时，到点后温柔提醒；当我一再选择“稍后”，她也会逐渐认真起来。</p>
+            <p class="focus-second-paragraph">它最重要的设计，是给“再等五分钟”一个边界。连续三次延长之后，工具会收起继续推迟的选项，先带我完成一轮休息。起身、伸展、喝水、安静充电，每个阶段都有对应的表情与动作，让休息也成为体验的一部分。</p>
+            <div class="focus-highlights"><span><b>专注时</b>安静陪伴</span><span><b>3 次延长</b>明确边界</span><span><b>休息时</b>动作引导</span></div>
+            <p class="focus-ownership">从自己的需求出发，设计规则，借助 Codex 等 AI 工具实现，再通过测试与持续自用检查体验。这个工具也曾交给身边的同学和朋友试用，收到正向反馈。</p>
+          </div>
+          <details class="focus-journey" id="focus-journey">
+            <summary class="journey-summary">
+              <div class="journey-anya-guide" aria-hidden="true">
+                <img class="journey-anya-avatar" src="anya-ring-peek-v1.png" alt="" width="148" height="148" loading="lazy">
+                <span class="journey-anya-speech" id="journey-speech">戳我体验完整流程呀 ✨</span>
+              </div>
+              <div class="journey-summary-content">
+                <div class="journey-title-line">
+                  <b class="journey-summary-label">展开体验完整流程</b>
+                  <span class="journey-badge" aria-hidden="true">10 个真实界面 · 不同表情</span>
+                </div>
+                <small class="journey-summary-desc">从安静专注，到认真提醒，再到好好休息。点击查看每个阶段的真实交互与设计细节。</small>
+              </div>
+              <span class="journey-cta-btn" aria-hidden="true">
+                <span class="journey-cta-icon">+</span>
+                <span class="journey-cta-text">点击展开</span>
+              </span>
+            </summary>
+            <div class="focus-flow">
+              <nav class="flow-tabs" aria-label="选择 Anya Focus 体验阶段" hidden>
+<button type="button" class="flow-tab" id="focus-tab-0" data-flow-index="0" aria-controls="focus-panel-0"><span>01</span>准备开始</button>
+<button type="button" class="flow-tab" id="focus-tab-1" data-flow-index="1" aria-controls="focus-panel-1"><span>02</span>安静专注</button>
+<button type="button" class="flow-tab" id="focus-tab-2" data-flow-index="2" aria-controls="focus-panel-2"><span>03</span>到点提醒</button>
+<button type="button" class="flow-tab" id="focus-tab-3" data-flow-index="3" aria-controls="focus-panel-3"><span>04</span>已稍后 1 次</button>
+<button type="button" class="flow-tab" id="focus-tab-4" data-flow-index="4" aria-controls="focus-panel-4"><span>05</span>已稍后 2 次</button>
+<button type="button" class="flow-tab" id="focus-tab-5" data-flow-index="5" aria-controls="focus-panel-5"><span>06</span>3 次后先休息</button>
+<button type="button" class="flow-tab" id="focus-tab-6" data-flow-index="6" aria-controls="focus-panel-6"><span>07</span>起身走走</button>
+<button type="button" class="flow-tab" id="focus-tab-7" data-flow-index="7" aria-controls="focus-panel-7"><span>08</span>伸展一下</button>
+<button type="button" class="flow-tab" id="focus-tab-8" data-flow-index="8" aria-controls="focus-panel-8"><span>09</span>补一口水</button>
+<button type="button" class="flow-tab" id="focus-tab-9" data-flow-index="9" aria-controls="focus-panel-9"><span>10</span>安静充电</button>
+              </nav>
+              <div class="flow-panels">
+<section class="focus-panel" id="focus-panel-0" aria-labelledby="focus-stage-0">
+  <div class="flow-screen"><img src="main-ready.webp" alt="Anya Focus 实际界面：准备开始" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="main-ready.png" data-image-alt="Anya Focus · 准备开始" data-image-caption="Anya Focus · 准备开始 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 01 / FOCUS</p><h4 id="focus-stage-0">给专注一个轻松的开场。</h4><p>设置好自己的工作与休息节奏，从一次计时开始。准备页的 Anya 会用不同姿态陪伴等待，让打开工具这件小事也有一点期待。</p><blockquote>准备好了，就从眼前这一件事开始。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-1" aria-labelledby="focus-stage-1">
+  <div class="flow-screen"><img src="main-working.webp" alt="Anya Focus 实际界面：安静专注" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="main-working.png" data-image-alt="Anya Focus · 安静专注" data-image-caption="Anya Focus · 安静专注 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 02 / FOCUS</p><h4 id="focus-stage-1">你做事情，她帮你看时间。</h4><p>计时开始后，界面清楚呈现剩余时间和本轮进度。需要时可以暂停或提前休息；也可以让小巧的悬浮圆环留在桌面，把更多空间交还给正在做的事。</p><blockquote>陪伴感留在一旁，注意力留给眼前。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-2" aria-labelledby="focus-stage-2">
+  <div class="flow-screen"><img src="reminder-normal.webp" alt="Anya Focus 实际界面：到点提醒" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="reminder-normal.png" data-image-alt="Anya Focus · 到点提醒" data-image-caption="Anya Focus · 到点提醒 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 03 / GENTLE REMINDER</p><h4 id="focus-stage-2">先温柔地提醒一次。</h4><p>专注计时结束，Anya 会邀请你离开屏幕、休息一下。手头确实还差一点时，可以选择“稍后”，给任务留下收尾的余地。</p><blockquote>到点了，该照顾一下身体。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-3" aria-labelledby="focus-stage-3">
+  <div class="flow-screen"><img src="reminder-second.webp" alt="Anya Focus 实际界面：已稍后 1 次" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="reminder-second.png" data-image-alt="Anya Focus · 已稍后 1 次" data-image-caption="Anya Focus · 已稍后 1 次 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 04 / GENTLE REMINDER</p><h4 id="focus-stage-3">还有事情，但也别忘了休息。</h4><p>第一次延长后，提醒语气和角色表情一起变化。工具记住了这次推迟，让“再等一会儿”不再成为没有痕迹的选择。</p><blockquote>先把这一点收尾，再给自己一点空闲。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-4" aria-labelledby="focus-stage-4">
+  <div class="flow-screen"><img src="reminder-third.webp" alt="Anya Focus 实际界面：已稍后 2 次" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="reminder-third.png" data-image-alt="Anya Focus · 已稍后 2 次" data-image-caption="Anya Focus · 已稍后 2 次 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 05 / GENTLE REMINDER</p><h4 id="focus-stage-4">Anya 开始认真盯着你。</h4><p>再次推迟，角色变得更认真，提醒也更加明确。第三次“稍后”仍然保留，但这已经是本轮最后一次延长机会。</p><blockquote>可以收尾，不能一直往后拖。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-5" aria-labelledby="focus-stage-5">
+  <div class="flow-screen"><img src="reminder-locked.webp" alt="Anya Focus 实际界面：3 次后先休息" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="reminder-locked.png" data-image-alt="Anya Focus · 3 次后先休息" data-image-caption="Anya Focus · 3 次后先休息 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 06 / GENTLE REMINDER</p><h4 id="focus-stage-5">这一次，真的要休息了。</h4><p>连续选择三次“稍后”后，下一次提醒不再提供延长按钮，只保留进入休息的入口。给反复拖延设一个明确边界，完成这轮休息后再开始新的专注。</p><blockquote>温柔可以有很多次，规则也要有边界。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-6" aria-labelledby="focus-stage-6">
+  <div class="flow-screen"><img src="break-early.webp" alt="Anya Focus 实际界面：起身走走" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="break-early.png" data-image-alt="Anya Focus · 起身走走" data-image-caption="Anya Focus · 起身走走 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 07 / TAKE A BREAK</p><h4 id="focus-stage-6">先从椅子里站起来。</h4><p>进入休息后，倒计时与引导一起出现。Anya 切换为起身动作，提醒你暂时离开坐姿，让休息从一个很小的动作开始。</p><blockquote>先起身，换一个姿势，也换一口气。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-7" aria-labelledby="focus-stage-7">
+  <div class="flow-screen"><img src="break-stretch.webp" alt="Anya Focus 实际界面：伸展一下" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="break-stretch.png" data-image-alt="Anya Focus · 伸展一下" data-image-caption="Anya Focus · 伸展一下 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 08 / TAKE A BREAK</p><h4 id="focus-stage-7">把紧绷慢慢放下来。</h4><p>休息不只是看着另一块倒计时。角色用伸展动作给出下一步提示，配合清晰的阶段进度，让这几分钟有具体、轻松的去处。</p><blockquote>伸个懒腰，暂时松开手头的事情。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-8" aria-labelledby="focus-stage-8">
+  <div class="flow-screen"><img src="break-mid.webp" alt="Anya Focus 实际界面：补一口水" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="break-mid.png" data-image-alt="Anya Focus · 补一口水" data-image-caption="Anya Focus · 补一口水 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 09 / TAKE A BREAK</p><h4 id="focus-stage-8">给身体，也给脑袋一点空隙。</h4><p>喝水阶段，Anya 捧起水杯。倒计时仍然可见，提醒从“该停下来”变成“现在可以做什么”，让放松也有温暖的陪伴。</p><blockquote>慢慢喝水，这几分钟属于你。</blockquote></div>
+</section>
+<section class="focus-panel" id="focus-panel-9" aria-labelledby="focus-stage-9">
+  <div class="flow-screen"><img src="break-late.webp" alt="Anya Focus 实际界面：安静充电" loading="lazy" decoding="async"><button class="flow-zoom" type="button" data-lightbox-src="break-late.png" data-image-alt="Anya Focus · 安静充电" data-image-caption="Anya Focus · 安静充电 · 桌面工具实际界面">查看原尺寸界面 ↗</button></div>
+  <div class="flow-story"><p class="case-kicker">STEP 10 / TAKE A BREAK</p><h4 id="focus-stage-9">休息好了，再认真出发。</h4><p>临近休息结束，角色切换到安静充电的状态。一次专注、一次真正的休息，再回到新的任务，让工作与放松形成可以持续的节奏。</p><blockquote>有认真投入，也有好好恢复。</blockquote></div>
+</section>
+                <div class="flow-controls" hidden><button type="button" id="flow-prev">← 上一步</button><span id="flow-position" aria-live="polite">01 / 10</span><button type="button" id="flow-next">下一步 →</button></div>
+              </div>
+            </div>
+            <div class="focus-making"><div><b>从想法到成品</b><p>我负责发现痛点、拆解需求、设计规则并检查使用结果；AI 承担主要代码实现。让需求落地，也对做出来的东西负责。</p></div><div><b>在真实使用中检验</b><p>持续自用，并向身边同学和朋友开放试用。2026 年 9 月 22 日，核心计时与提醒升级相关的 19 项单元测试通过。</p></div></div>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section profile-section" id="profile" aria-labelledby="profile-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">05 / EDUCATION &amp; EXPERIENCE</p>
+            <div class="section-title-row">
+              <h2 id="profile-title">一路走来，认真积累。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">每一段经历，都留下下一步的积累。</p>
+        </div>
+        <div class="education-grid">
+          <article class="education-card">
+            <span class="edu-date">2020.09 — 2024.06</span>
+            <figure class="education-art">
+              <img src="education-tyut-v1.webp" alt="参考太原理工大学官网校园照片重绘的校园插画" loading="lazy" decoding="async">
+            </figure>
+            <h3>太原理工大学</h3>
+            <p>环境工程 · 本科</p>
+            <div class="edu-badges" aria-label="本科荣誉与活动">
+              <span>“互联网+”大赛银奖</span>
+              <span>优秀志愿者</span>
+              <span>学业优秀奖</span>
+            </div>
+            <p class="edu-note">建立理解工程问题、整理资料与严谨表达的基础。本科期间积极投身公益募捐与校园志愿服务，并随团队在“互联网+”创新创业大赛中获得银奖。</p>
+          </article>
+          <article class="education-card">
+            <span class="edu-date">2024 — 2027（预计）</span>
+            <figure class="education-art">
+              <img src="education-hhu-v1.webp" alt="参考河海大学官网西康路校区照片重绘的校园插画" loading="lazy" decoding="async">
+            </figure>
+            <h3>河海大学</h3>
+            <p>资源与环境（物理海洋） · 硕士</p>
+            <div class="edu-badges" aria-label="硕士荣誉与研究特点">
+              <span>二等奖学金（研一）</span>
+              <span>AI 协作科研实践</span>
+            </div>
+            <p class="edu-note">在物理海洋研究中推进长时间序列分析与模型验证。日常深度借助 Codex 等 AI 工具辅助 Python 脚本编写、数据批量清洗与异常排查，把 AI 协作融入科研日常。</p>
+          </article>
+        </div>
+        <article class="internship-feature" aria-labelledby="internship-title">
+          <figure class="internship-art">
+            <img src="education-nmefc-v1.webp" width="1672" height="941" alt="海洋数据研究工作主题插画，人物与场景为艺术创作" loading="lazy" decoding="async">
+          </figure>
+          <div class="internship-copy">
+            <p class="case-kicker">INTERNSHIP / 2025.09 — 2026.06</p>
+            <h3 id="internship-title">国家海洋环境预报中心</h3>
+            <p class="internship-lead">把研究中的耐心，带进有时限的协作任务。</p>
+            <p>实习期间，我一边跟随学校老师推进硕士课题，开展数据处理、结果分析与科研绘图；一边参与年度极地气候变化材料制作，将数据、图件和文字衔接成可以交接的内容。</p>
+            <div class="internship-story">
+              <span class="story-number">01 DAY<small>一次紧急任务</small></span>
+              <div><h4>从原始数据，到一段完整的材料</h4><p>在约一天的任务周期内，负责南北极相关站点数据的下载、处理、趋势可视化、图件复刻与对应章节撰写。借助 AI 辅助脚本生成和排查，先用小样例试运行，再对照结果与异常检查，完成本人负责板块的交付。</p></div>
+            </div>
+            <p class="internship-takeaway">这段经历让我更重视：在时间有限时拆清任务，在协作中说清结果，把检查留在交付之前。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section life-section" id="life" aria-labelledby="life-title">
+      <div class="section-shell">
+        <div class="section-head">
+          <div>
+            <p class="section-index">06 / OFFLINE MOMENTS</p>
+            <div class="section-title-row">
+              <h2 id="life-title">屏幕之外，也认真生活。</h2>
+              <span class="section-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="section-aside">留一点空间给运动与放松。</p>
+        </div>
+        <div class="life-grid">
+          <article class="life-card">
+            <div class="life-art gym" role="img" aria-label="健身器材的原创氛围插画，不是本人照片"></div>
+            <div class="life-copy"><h3>健身 <span class="life-label">MOVE</span></h3><p>在运动中释放压力，把精力慢慢找回来。</p></div>
+          </article>
+          <article class="life-card">
+            <div class="life-art swim" role="img" aria-label="泳池与泳镜的原创氛围插画，不是本人照片"></div>
+            <div class="life-copy"><h3>游泳 <span class="life-label">RESET</span></h3><p>让注意力回到呼吸与节奏，给忙碌的脑袋放个假。</p></div>
+          </article>
+        </div>
+        <p class="life-note">好好运动，也好好放松。留一点时间给自己，才能带着更好的状态，重新投入生活与工作。</p>
+      </div>
+    </section>
+  </main>
+
+  <section class="closing" id="contact" aria-labelledby="contact-title">
+    <div class="closing-inner">
+      <div class="closing-character"><img class="closing-anya" id="closing-anya" src="footer-anya-v3.png" alt="Anya 挥手插画" width="1191" height="1320" loading="lazy"><span class="greet-bubble" id="greet-bubble" role="status" aria-live="polite"></span></div>
+      <div class="closing-copy">
+        <p class="section-index">07 / GET IN TOUCH</p>
+        <h2 id="contact-title">期待一起做出有意思的事情。</h2>
+        <div class="closing-actions">
+          <a class="button button-dark" href="高天宇-求职简历-v19.pdf" target="_blank" rel="noopener">查看简历 ↗</a>
+          <a class="button button-light" href="mailto:1549235408@qq.com">发邮件联系 ↗</a>
+        </div>
+        <button class="greet-button" id="anya-greet" type="button" aria-pressed="false" aria-controls="greet-bubble">和 Anya 打个招呼</button>
+      </div>
+      <div class="closing-side">
+        <a class="contact-email" href="mailto:1549235408@qq.com">1549235408@qq.com</a>
+        <button class="copy-email" id="copy-email" type="button">复制邮箱</button>
+        <span class="copy-status" id="copy-status" aria-live="polite"></span>
+        <a class="back-top" href="#top">返回顶部 ↑</a>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-inner"><span>TIANYU / PERSONAL ARCHIVE</span><span>KEEP CURIOUS. KEEP GOING.</span></div>
+  </footer>
+
+  <dialog class="media-viewer" id="media-viewer" aria-label="图片查看器">
+    <button class="viewer-close" type="button" aria-label="关闭图片查看器">×</button>
+    <figure class="viewer-figure"><img id="viewer-image" alt=""><figcaption id="viewer-caption"></figcaption></figure>
+  </dialog>
+  <script src="interactions.js" defer></script>
+</body>
+</html>
+
+
+
+
