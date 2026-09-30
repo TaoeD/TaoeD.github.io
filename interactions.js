@@ -2,6 +2,29 @@
 (() => {
   const directory = document.querySelector('.mobile-directory');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // 档案编号首次进入阅读区时盖章；正文始终可见，离开后不重播。
+  const desktopMotion = window.matchMedia('(min-width: 761px)');
+  const archiveHeads = [];
+  document.querySelectorAll('.section-index').forEach(index => {
+    const match = index.textContent.match(/^(\d{2})(\s*\/.*)$/);
+    if (!match) return;
+    const stamp = document.createElement('span');
+    stamp.className = 'archive-stamp-number';
+    stamp.textContent = match[1];
+    const label = document.createElement('span');
+    label.append(stamp, document.createTextNode(match[2]));
+    index.replaceChildren(label);
+    archiveHeads.push(index.closest('.section-head') || index.parentElement);
+  });
+  const archiveObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      if (desktopMotion.matches && !motion.matches) entry.target.classList.add('archive-arrived');
+      // 包括减少动态效果模式：每次访问只处理一次，不补播已经读过的章节。
+      archiveObserver.unobserve(entry.target);
+    });
+  }, { threshold: .25, rootMargin: '0px 0px -12% 0px' });
+  archiveHeads.forEach(head => archiveObserver.observe(head));
   const hero = document.querySelector('.hero');
   const heroArt = document.querySelector('.hero-art');
   const peanut = document.getElementById('peanut-button');

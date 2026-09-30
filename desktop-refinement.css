@@ -1,3 +1,33 @@
+/* 档案盖章与流程淡入只用于桌面；不移动正文、不改变布局和手机样式。 */
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .archive-arrived .archive-stamp-number {
+    display: inline-block;
+    transform-origin: 50% 70%;
+    animation: archive-stamp-land 440ms cubic-bezier(.22,.61,.36,1) both;
+  }
+  .archive-arrived .section-rule,
+  .archive-arrived .section-index::after {
+    transform-origin: left center;
+    animation: archive-rule-draw 480ms cubic-bezier(.22,.61,.36,1) 140ms both;
+  }
+  .flow-enhanced .focus-panel:not([hidden]) {
+    animation: focus-stage-enter 180ms ease-out both;
+  }
+}
+@keyframes archive-stamp-land {
+  0% { opacity: .35; transform: translateY(-9px) scale(1.18) rotate(-7deg); }
+  65% { opacity: 1; transform: translateY(1px) scale(.97) rotate(1deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes archive-rule-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes focus-stage-enter {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
 /* 桌面精修：沿用现有字体和移动端断点；交互状态适用于所有输入方式。 */
 :root { --feedback-time: 180ms; }
 .button, .nav-cta, .copy-email, .greet-button, .viewer-close {
