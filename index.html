@@ -940,7 +940,7 @@
   </style>
   <link rel="stylesheet" href="desktop-refinement.css?v=20260930-archive-motion">
   <link rel="stylesheet" href="personal-intro.css">
-  <link rel="stylesheet" href="input-practice.css?v=20261005">
+  <link rel="stylesheet" href="input-practice.css?v=20261005-actual">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute"><defs><symbol id="icon-document" viewBox="0 0 24 24"><path d="M7 3h8l5 5v13H7zM15 3v6h5M10 13h7M10 17h7"/></symbol><symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 21V12h4v9M11 21V7h4v14M18 21V3h4v18"/></symbol><symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="4" width="19" height="17" rx="2"/><circle cx="9" cy="9" r="1.5"/><path d="m4 18 6-5 4 3 4-6 4 6"/></symbol><symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></symbol><symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="M3 10h5l12-5v14L8 14H3zM8 14l2 7h4l-3-6M20 10l3-1M20 14l3 1"/></symbol><symbol id="icon-people" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="18" cy="8" r="2.5"/><path d="M2 21v-4a7 7 0 0 1 14 0v4zM16 14a5 5 0 0 1 7 4v3h-4"/></symbol><symbol id="icon-box" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5v11l-9 4-9-4zM3 8l9 5 9-5M12 13v10M8 5l9 5"/></symbol><symbol id="icon-headset" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v7h5v-7zM20 12h2v7h-5v-7zM20 19v3h-7"/></symbol></defs></svg>
@@ -1486,25 +1486,14 @@
             </dl>
             <p class="input-practice-result"><span aria-hidden="true">✓</span> 已用于个人日常输入，让想法落到每天会用的地方。</p>
           </div>
-          <figure class="input-practice-demo" aria-label="中文候选与英文对应的交互示意">
-            <div class="input-demo-heading"><span>一个日常的小想法</span><span aria-hidden="true">中 → En</span></div>
-            <p class="input-demo-question">这一眼，<br>就顺手认识一个词。</p>
-            <div class="input-demo-window" id="input-demo-window" aria-live="polite" aria-atomic="true">
-              <div class="input-demo-composition"><span id="input-demo-pinyin">pingguo</span><span class="input-demo-caret" aria-hidden="true"></span><small>拼音输入</small></div>
-              <ol class="input-demo-candidates">
-                <li class="is-selected"><span class="input-demo-index">1</span><span class="input-demo-chinese" data-input-cn>苹果</span><span class="input-demo-arrow" aria-hidden="true">→</span><span class="input-demo-english" data-input-en>apple</span></li>
-                <li><span class="input-demo-index">2</span><span class="input-demo-chinese" data-input-cn>苹果树</span><span class="input-demo-arrow" aria-hidden="true">·</span><span class="input-demo-english" data-input-en>apple tree</span></li>
-                <li><span class="input-demo-index">3</span><span class="input-demo-chinese" data-input-cn>苹果汁</span><span class="input-demo-arrow" aria-hidden="true">·</span><span class="input-demo-english" data-input-en>apple juice</span></li>
-              </ol>
-              <div class="input-demo-footer"><span>中文照常输入，英文留在一旁。</span><span aria-hidden="true">01 / 03</span></div>
-            </div>
-            <div class="input-demo-switches" role="group" aria-label="切换示例词" hidden>
-              <span>换个词看看</span>
-              <button type="button" data-input-example="apple" aria-pressed="true" aria-controls="input-demo-window">苹果</button>
-              <button type="button" data-input-example="coffee" aria-pressed="false" aria-controls="input-demo-window">咖啡</button>
-              <button type="button" data-input-example="study" aria-pressed="false" aria-controls="input-demo-window">学习</button>
-            </div>
-            <figcaption>交互示意，用于说明中英文对应关系；非软件截图。</figcaption>
+          <figure class="input-practice-visual">
+            <div class="input-visual-heading"><span>从想法，到实际界面</span><span>PERSONAL PROJECT</span></div>
+            <button class="input-skin-image" type="button" data-lightbox-src="input-skin-actual.png" data-image-alt="输入法实际皮肤效果：人物趴在纸张上，三行中文候选旁显示对应英文" data-image-caption="个人输入法界面改造 · 项目渲染器导出的实际皮肤画面" aria-label="放大查看输入法实际皮肤效果">
+              <img src="input-skin-actual.png" alt="实际制作的输入法皮肤：苹果旁显示 apple，平安旁显示 peace，苹果树旁显示 apple tree" width="520" height="346" loading="lazy" decoding="async">
+              <span class="input-skin-zoom">点击放大 ↗</span>
+            </button>
+            <div class="input-visual-notes"><span>三行候选</span><span>中英对应</span><span>主题皮肤</span></div>
+            <figcaption>项目渲染器导出的实际皮肤画面。</figcaption>
           </figure>
           <p class="input-practice-source">基于开源输入法改造，候选译词能力由原项目提供。<a href="https://github.com/qingjian-team/qingjian" target="_blank" rel="noopener noreferrer">查看原项目 ↗</a></p>
         </article>
@@ -1627,7 +1616,6 @@
     <figure class="viewer-figure"><img id="viewer-image" alt=""><figcaption id="viewer-caption"></figcaption></figure>
   </dialog>
   <script src="interactions.js?v=20260930-archive-motion" defer></script>
-  <script src="input-practice.js?v=20261005" defer></script>
 </body>
 </html>
 
