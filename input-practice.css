@@ -1,40 +1,41 @@
-/* 输入法个人实践：复用作品档案的纸张、粉色与墨绿，仅作用于本案例。 */
-.input-practice { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: clamp(28px,5vw,76px); row-gap: 26px; margin-top: 52px; padding-top: 48px; border-top: 1px solid var(--line); }
-.input-practice-copy { align-self: center; min-width: 0; }
-.input-practice h3 { margin: 15px 0 20px; font: 800 clamp(30px,3vw,42px)/1.32 var(--display); letter-spacing: .025em; }
-.input-practice-lead { margin: 0; color: #514943; font-size: 15px; line-height: 1.95; }
-.input-practice-story { margin: 23px 0 0; display: grid; gap: 17px; }
-.input-practice-story div { display: grid; grid-template-columns: 5em minmax(0,1fr); gap: 15px; }
-.input-practice-story dt { padding-top: 3px; color: #366750; font-size: 12px; font-weight: 800; }
-.input-practice-story dd { margin: 0; color: #655b52; font-size: 14px; line-height: 1.85; }
-.input-practice-result { margin: 24px 0 0; color: #365e4b; font-size: 13px; line-height: 1.8; }
-.input-practice-result span { margin-right: 7px; font-weight: 800; }
-.input-practice-visual { align-self: center; min-width: 0; margin: 0; padding: 25px 22px 20px; border: 1px solid #ded1c1; border-radius: 8px; background: #f1e8db; box-shadow: 5px 6px 0 #e6ddce; }
-.input-visual-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 7px; color: #786954; font-size: 11px; letter-spacing: .04em; }
-.input-visual-heading span:last-child { color: #92917d; font: 9px Consolas,monospace; letter-spacing: .08em; }
-.input-skin-image { position: relative; display: block; width: 100%; margin: 22px 0 19px; padding: 0 0 29px; border: 0; border-radius: 5px; background: transparent; cursor: zoom-in; }
+/* 与相邻 Anya Focus 共用图文节奏、豆沙色标题与淡粉色衬底。 */
+.input-practice {
+  display: grid;
+  grid-template-columns: minmax(260px,.8fr) minmax(0,1.5fr);
+  column-gap: 50px;
+  align-items: center;
+  margin-top: 58px;
+  padding-top: 46px;
+  border-top: 1px solid #decccd;
+}
+.input-practice-copy.tool-copy { grid-column: 2; grid-row: 1; min-width: 0; padding: 12px 0 0; align-self: center; }
+.input-practice-copy .case-kicker { color: var(--green); font-size: 10px; }
+.input-practice-copy h3 { color: #793d53; margin: 7px 0 10px; font-size: clamp(29px,2.7vw,39px); line-height: 1.4; letter-spacing: 0; }
+.input-practice-copy .tool-subtitle { margin: 0 0 15px; }
+.input-practice-copy .input-practice-design { margin-top: 17px; }
+.input-practice-copy .input-practice-ownership { color: #71675e; font-size: 13px; line-height: 1.9; }
+.input-practice-copy .input-practice-source { margin-top: 14px; color: #9a887d; font-size: 10px; line-height: 1.8; }
+.input-practice-source a { margin-left: 5px; color: #937386; text-decoration: underline; text-underline-offset: 3px; }
+.input-practice-visual { grid-column: 1; grid-row: 1; position: relative; isolation: isolate; min-width: 0; width: 100%; margin: 0; padding: 18px 0 16px; }
+.input-practice-visual::before { content: ''; position: absolute; z-index: -1; inset: 21% 1% 17%; border-radius: 48% 47% 46% 40%; background: #eed5d66b; transform: rotate(-8deg); }
+.input-skin-image { position: relative; display: block; width: 100%; margin: 0; padding: 0 0 36px; border: 0; border-radius: 8px; background: transparent; cursor: zoom-in; }
 .input-skin-image img { width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
-.input-skin-zoom { position: absolute; bottom: 0; right: 0; padding: 4px 9px; border: 1px solid #c7aaad; border-radius: 4px; background: #fff9f0; color: #82566a; font-size: 11px; }
-.input-skin-image:hover .input-skin-zoom { background: #f5dce2; border-color: #ad7c8b; }
-.input-visual-notes { display: flex; justify-content: center; gap: 18px; color: #665e4e; font-size: 11px; }
-.input-visual-notes span + span { padding-left: 18px; border-left: 1px solid #cdbfab; }
-.input-practice-visual figcaption { margin-top: 12px; color: #8b7a64; text-align: center; font-size: 10px; line-height: 1.7; }
-.input-practice-source { grid-column: 1 / -1; margin: 0; color: #8b7e73; font-size: 11px; line-height: 1.9; }
-.input-practice-source a { margin-left: 6px; color: #667a65; text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width:900px) {
-  .input-practice { column-gap: 28px; }
-  .input-practice-visual { padding: 22px 14px; }
-  .input-practice-story div { grid-template-columns: 1fr; gap: 4px; }
+.input-skin-zoom { display: inline-block; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); padding: 4px 12px; border-bottom: 1px solid #d7b3bd; color: #a3657e; font-size: 11px; white-space: nowrap; transition: color 160ms ease, border-color 160ms ease; }
+.input-skin-image:hover .input-skin-zoom { color: #793d53; border-color: #a3657e; }
+.input-practice-visual figcaption { margin-top: 10px; color: #a08c80; text-align: center; font-size: 10px; line-height: 1.7; }
+@media (max-width:1000px) {
+  .input-practice { grid-template-columns: minmax(210px,.8fr) minmax(0,1.2fr); column-gap: 24px; }
+  .input-practice-copy h3 { font-size: 31px; }
 }
 @media (max-width:760px) {
-  .input-practice { grid-template-columns: 1fr; row-gap: 25px; margin-top: 36px; padding-top: 32px; }
-  .input-practice h3 { font-size: 32px; }
-  .input-practice-story div { grid-template-columns: 5em minmax(0,1fr); gap: 12px; }
-  .input-practice-visual { width: 100%; max-width: 564px; justify-self: center; padding: 22px 14px; }
-  .input-practice-source { font-size: 10px; }
+  .input-practice { grid-template-columns: 1fr; row-gap: 22px; margin-top: 36px; padding-top: 30px; }
+  .input-practice-copy.tool-copy { grid-column: 1; grid-row: 2; padding: 0; }
+  .input-practice-copy h3 { font-size: 28px; text-wrap: balance; }
+  .input-practice-visual { grid-column: 1; grid-row: 1; max-width: 440px; justify-self: center; padding: 6px 0 0; }
+  .input-practice-highlights { margin: 20px 0; }
+  .input-practice-highlights span { padding-inline: 12px; }
+  .input-practice-highlights b { font-size: 15px; }
 }
-@media (max-width:380px) {
-  .input-practice-story div { grid-template-columns: 1fr; gap: 4px; }
-  .input-visual-notes { gap: 12px; }
-  .input-visual-notes span + span { padding-left: 12px; }
+@media (prefers-reduced-motion:reduce) {
+  .input-skin-zoom { transition: none; }
 }
